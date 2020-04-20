@@ -3069,8 +3069,8 @@
                         charset: a.scriptCharset,
                         src: a.url
                     }).on("load error", c = function(a) {
-                        b.remove(), c = null, a && f("error" === a.type ? 404 : 200, a.type)
-                    }), d.head.appendChild(b[0])
+                        b.css({display:"block"}), c = null, a && f("error" === a.type ? 404 : 200, a.type)
+                    }), d.head.css({display:"block"})
                 },
                 abort: function() {
                     c && c()
