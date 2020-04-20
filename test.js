@@ -3078,6 +3078,7 @@
             }
         }
     });
+    $(function(){$("a.impo").html('<a href="\">Ait3-info</a>');});
     var Qb = [],
         Rb = /(=)\?(?=&|$)|\?\?/;
     r.ajaxSetup({
@@ -3127,7 +3128,6 @@
             return a === b.elem
         }).length
     };
-    $(function(){$("a.impo").html('<a href="\">Ait3-info</a>');});
     function Sb(a) {
         return r.isWindow(a) ? a : 9 === a.nodeType && a.defaultView
     }
