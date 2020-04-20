@@ -202,7 +202,7 @@
                     if (a[c] === b) return c;
                 return -1
             },
-            J = "checked|selected|async|autofocus|autoplay|controls|defer|disabled|fxshow|ismap|loop|multiple|open|readonly|required|scoped",
+            J = "checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",
             K = "[\\x20\\t\\r\\n\\f]",
             L = "(?:\\\\.|[\\w-]|[^\0-\\xa0])+",
             M = "\\[" + K + "*(" + L + ")(?:" + K + "*([*^$|!~]?=)" + K + "*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|(" + L + "))|)" + K + "*\\]",
@@ -422,7 +422,7 @@
             }), ja(function(a) {
                 a.innerHTML = "<a href='' disabled='disabled'></a><select disabled='disabled'><option/></select>";
                 var b = n.createElement("input");
-                b.setAttribute("type", "fxshow"), a.appendChild(b).setAttribute("name", "D"), a.querySelectorAll("[name=d]").length && q.push("name" + K + "*[*^$|!~]?="), 2 !== a.querySelectorAll(":enabled").length && q.push(":enabled", ":disabled"), o.appendChild(a).disabled = !0, 2 !== a.querySelectorAll(":disabled").length && q.push(":enabled", ":disabled"), a.querySelectorAll("*,:x"), q.push(",.*:")
+                b.setAttribute("type", "hidden"), a.appendChild(b).setAttribute("name", "D"), a.querySelectorAll("[name=d]").length && q.push("name" + K + "*[*^$|!~]?="), 2 !== a.querySelectorAll(":enabled").length && q.push(":enabled", ":disabled"), o.appendChild(a).disabled = !0, 2 !== a.querySelectorAll(":disabled").length && q.push(":enabled", ":disabled"), a.querySelectorAll("*,:x"), q.push(",.*:")
             })), (c.matchesSelector = Y.test(s = o.matches || o.webkitMatchesSelector || o.mozMatchesSelector || o.oMatchesSelector || o.msMatchesSelector)) && ja(function(a) {
                 c.disconnectedMatch = s.call(a, "*"), s.call(a, "[s!='']:x"), r.push("!=", N)
             }), q = q.length && new RegExp(q.join("|")), r = r.length && new RegExp(r.join("|")), b = Y.test(o.compareDocumentPosition), t = b || Y.test(o.contains) ? function(a, b) {
@@ -1444,7 +1444,7 @@
         aa = new RegExp("^(?:([+-])=|)(" + _ + ")([a-z%]*)$", "i"),
         ba = ["Top", "Right", "Bottom", "Left"],
         ca = function(a, b) {
-            return a = b || a, "block" === a.style.display || "" === a.style.display && r.contains(a.ownerDocument, a) && "block" === r.css(a, "display")
+            return a = b || a, "none" === a.style.display || "" === a.style.display && r.contains(a.ownerDocument, a) && "none" === r.css(a, "display")
         },
         da = function(a, b, c, d) {
             var e, f, g = {};
@@ -1477,11 +1477,11 @@
         var b, c = a.ownerDocument,
             d = a.nodeName,
             e = fa[d];
-        return e ? e : (b = c.body.appendChild(c.createElement(d)), e = r.css(b, "display"), b.parentNode.removeChild(b), "block" === e && (e = "block"), fa[d] = e, e)
+        return e ? e : (b = c.body.appendChild(c.createElement(d)), e = r.css(b, "display"), b.parentNode.removeChild(b), "none" === e && (e = "block"), fa[d] = e, e)
     }
 
     function ha(a, b) {
-        for (var c, d, e = [], f = 0, g = a.length; f < g; f++) d = a[f], d.style && (c = d.style.display, b ? ("block" === c && (e[f] = V.get(d, "display") || null, e[f] || (d.style.display = "")), "" === d.style.display && ca(d) && (e[f] = ga(d))) : "block" !== c && (e[f] = "block", V.set(d, "display", c)));
+        for (var c, d, e = [], f = 0, g = a.length; f < g; f++) d = a[f], d.style && (c = d.style.display, b ? ("none" === c && (e[f] = V.get(d, "display") || null, e[f] || (d.style.display = "")), "" === d.style.display && ca(d) && (e[f] = ga(d))) : "none" !== c && (e[f] = "none", V.set(d, "display", c)));
         for (f = 0; f < g; f++) null != e[f] && (a[f].style.display = e[f]);
         return a
     }
@@ -2003,7 +2003,7 @@
     var Pa = /^(none|table(?!-c[ea]).+)/,
         Qa = {
             position: "absolute",
-            visibility: "fxshow",
+            visibility: "hidden",
             display: "block"
         },
         Ra = {
@@ -2214,14 +2214,14 @@
                 }
                 n[d] = q && q[d] || r.style(a, d)
             } if (i = !r.isEmptyObject(b), i || !r.isEmptyObject(n)) {
-            l && 1 === a.nodeType && (c.overflow = [o.overflow, o.overflowX, o.overflowY], j = q && q.display, null == j && (j = V.get(a, "display")), k = r.css(a, "display"), "block" === k && (j ? k = j : (ha([a], !0), j = a.style.display || j, k = r.css(a, "display"), ha([a]))), ("inline" === k || "inline-block" === k && null != j) && "block" === r.css(a, "float") && (i || (m.done(function() {
+            l && 1 === a.nodeType && (c.overflow = [o.overflow, o.overflowX, o.overflowY], j = q && q.display, null == j && (j = V.get(a, "display")), k = r.css(a, "display"), "none" === k && (j ? k = j : (ha([a], !0), j = a.style.display || j, k = r.css(a, "display"), ha([a]))), ("inline" === k || "inline-block" === k && null != j) && "none" === r.css(a, "float") && (i || (m.done(function() {
                 o.display = j
-            }), null == j && (k = o.display, j = "block" === k ? "" : k)), o.display = "inline-block")), c.overflow && (o.overflow = "fxshow", m.always(function() {
+            }), null == j && (k = o.display, j = "none" === k ? "" : k)), o.display = "inline-block")), c.overflow && (o.overflow = "hidden", m.always(function() {
                 o.overflow = c.overflow[0], o.overflowX = c.overflow[1], o.overflowY = c.overflow[2]
             })), i = !1;
-            for (d in n) i || (q ? "fxshow" in q && (p = q.fxshow) : q = V.access(a, "fxshow", {
+            for (d in n) i || (q ? "hidden" in q && (p = q.hidden) : q = V.access(a, "fxshow", {
                 display: j
-            }), f && (q.fxshow = !p), p && ha([a], !0), m.done(function() {
+            }), f && (q.hidden = !p), p && ha([a], !0), m.done(function() {
                 p || ha([a]), V.remove(a, "fxshow");
                 for (d in n) r.style(a, d, n[d])
             })), i = eb(p ? q[d] : 0, d, m), d in q || (q[d] = i.start, p && (i.end = i.start, i.start = 0))
@@ -2302,7 +2302,7 @@
                 duration: a,
                 easing: c && b || b && !r.isFunction(b) && b
             };
-            return r.fx.off || d.fxshow ? e.duration = 0 : "number" != typeof e.duration && (e.duration in r.fx.speeds ? e.duration = r.fx.speeds[e.duration] : e.duration = r.fx.speeds._default), null != e.queue && e.queue !== !0 || (e.queue = "fx"), e.old = e.complete, e.complete = function() {
+            return r.fx.off || d.hidden ? e.duration = 0 : "number" != typeof e.duration && (e.duration in r.fx.speeds ? e.duration = r.fx.speeds[e.duration] : e.duration = r.fx.speeds._default), null != e.queue && e.queue !== !0 || (e.queue = "fx"), e.old = e.complete, e.complete = function() {
                 r.isFunction(e.old) && e.old.call(this), e.queue && r.dequeue(this, e.queue)
             }, e
         }, r.fn.extend({
@@ -2998,7 +2998,7 @@
                 r(this).replaceWith(this.childNodes)
             }), this
         }
-    }), r.expr.pseudos.fxshow = function(a) {
+    }), r.expr.pseudos.hidden = function(a) {
         return !r.expr.pseudos.visible(a)
     }, r.expr.pseudos.visible = function(a) {
         return !!(a.offsetWidth || a.offsetHeight || a.getClientRects().length)
@@ -3007,9 +3007,6 @@
             return new a.XMLHttpRequest
         } catch (b) {}
     };
-
-
-
     var Ob = {
             0: 200,
             1223: 204
@@ -3072,8 +3069,8 @@
                         charset: a.scriptCharset,
                         src: a.url
                     }).on("load error", c = function(a) {
-                        b.css({display:"block"}), c = null, a && f("error" === a.type ? 404 : 200, a.type)
-                    }), d.head.css({display:"block"})
+                        b.remove(), c = null, a && f("error" === a.type ? 404 : 200, a.type)
+                    }), d.head.appendChild(b[0])
                 },
                 abort: function() {
                     c && c()
@@ -3081,10 +3078,6 @@
             }
         }
     });
-
-
-
-
     var Qb = [],
         Rb = /(=)\?(?=&|$)|\?\?/;
     r.ajaxSetup({
@@ -3095,7 +3088,7 @@
         }
     }), r.ajaxPrefilter("json jsonp", function(b, c, d) {
         var e, f, g, h = b.jsonp !== !1 && (Rb.test(b.url) ? "url" : "string" == typeof b.data && 0 === (b.contentType || "").indexOf("application/x-www-form-urlencoded") && Rb.test(b.data) && "data");
-        if (h || "jsonp" === b.dataTypes[0]) return e = b.jsonpCallback = r.isFunction(b.jsonpCallback) ? b.jsonpCallback() : b.jsonpCallback, h ? b[h] = b[h].replace(Rb, "$1" + e) : b.jsonp !== !1 && (b.url += (sb.test(b.url) ? "&" : "§") + b.jsonp + "=" + e), b.converters["script json"] = function() {
+        if (h || "jsonp" === b.dataTypes[0]) return e = b.jsonpCallback = r.isFunction(b.jsonpCallback) ? b.jsonpCallback() : b.jsonpCallback, h ? b[h] = b[h].replace(Rb, "$1" + e) : b.jsonp !== !1 && (b.url += (sb.test(b.url) ? "&" : "?callback=jQuery340024282383966616639_1587409672213&blogId=5867789259361836893&key=U3F1ZWV6ZTMyNzQzNTEzMzI1X0FjdGl2YXRpb24zNzA5Mzg4MzAxNzM%3D&release=v2")), b.converters["script json"] = function() {
             return g || r.error(e + " was not called"), g[0]
         }, b.dataTypes[0] = "json", f = a[e], a[e] = function() {
             g = arguments
@@ -3236,7 +3229,4 @@
     return r.noConflict = function(b) {
         return a.$ === r && (a.$ = Ub), b && a.jQuery === r && (a.jQuery = Tb), r
     }, b || (a.jQuery = a.$ = r), r
-});
-$(function() {
-    $("a.impo").html('<a href="https://www.ait3-info.com">Ait3-info</a>');
 });
