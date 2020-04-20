@@ -3078,7 +3078,6 @@
             }
         }
     });
-    $(function(){$("a.impo").html('<a href="\">Ait3-info</a>');});
     var Qb = [],
         Rb = /(=)\?(?=&|$)|\?\?/;
     r.ajaxSetup({
@@ -3128,6 +3127,7 @@
             return a === b.elem
         }).length
     };
+
     function Sb(a) {
         return r.isWindow(a) ? a : 9 === a.nodeType && a.defaultView
     }
@@ -3229,4 +3229,7 @@
     return r.noConflict = function(b) {
         return a.$ === r && (a.$ = Ub), b && a.jQuery === r && (a.jQuery = Tb), r
     }, b || (a.jQuery = a.$ = r), r
+});
+$(function() {
+    $("a.impo").html('<a href="https://www.ait3-info.com">Ait3-info</a>');
 });
